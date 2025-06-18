@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Pemeriksaan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/hasil.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="dashboard.html" style="color: white;">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h2>Hasil Pemeriksaan</h2>
+            <i class="fa-solid fa-bell"></i>
+        </header>
+    
+        <main>
+            <div class="search-container">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Cari nama pemeriksaan...">
+            </div>
+            <div class="filter-pills">
+                <button class="filter-btn">Semua</button>
+                <button class="filter-btn">Minggu Ini</button>
+                <button class="filter-btn">Bulan Ini</button>
+                <button class="filter-btn">Selesai</button>
+            </div>
+            
+            <div class="results-list">
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <h3>Pemeriksaan Hematologi Lengkap</h3>
+                        <span class="date">14 Mei 2025</span>
+                    </div>
+                    <div class="result-card-footer">
+                        <span class="status-pill">Selesai</span>
+                        <a href="detail-pemeriksaan.html" class="detail-btn"><i class="fa-solid fa-file-lines"></i> Lihat Detail</a>
+                    </div>
+                </div>
+                <div class="result-card">
+                     <div class="result-card-header">
+                        <h3>Pemeriksaan Hematologi Lengkap</h3>
+                        <span class="date">14 Mei 2025</span>
+                    </div>
+                    <div class="result-card-footer">
+                        <span class="status-pill">Selesai</span>
+                        <a href="detail-pemeriksaan.html" class="detail-btn"><i class="fa-solid fa-file-lines"></i> Lihat Detail</a>
+                    </div>
+                </div>
+                 </div>
+        </main>
+    
+        <nav class="bottom-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+                <a href="jadwal.html"  class="nav-item">
+                    <i class="fa-solid fa-calendar-alt"></i>
+                    <span>Jadwal</span>
+                </a>
+                <a href="hasil.html" class="nav-item active">
+                    <i class="fa-solid fa-file-medical"></i>
+                    <span>Hasil</span>
+                </a>
+                <a href="profil.html" class="nav-item">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Profil</span>
+                </a>
+        </nav>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

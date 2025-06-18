@@ -1,0 +1,12 @@
+:root {
+  --main: #1668CF;
+  --main_a: #236CB3;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: auto;
+}

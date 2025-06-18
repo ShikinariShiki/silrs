@@ -1,0 +1,168 @@
+:root {
+  --primary-blue: #1e63e9;
+  --light-grey: #f4f6f8;
+  --dark-text: #333;
+  --light-text: #666;
+  --green-bg: #e8f5e9;
+  --green-text: #4caf50;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins";
+  overflow: auto;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 99;
+  background-color: #1e63e9;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.2em;
+}
+.header .fa-solid {
+  font-size: 1.4em;
+}
+main {
+  padding: 5rem 5% 6rem 5%;
+}
+
+.search-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+.search-container .fa-search {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--light-text);
+}
+.search-container input {
+  width: 100%;
+  padding: 12px 15px 12px 40px;
+  border: 1px solid #ddd;
+  border-radius: 99px;
+  box-sizing: border-box;
+}
+
+.filter-pills {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+.filter-pills button {
+  background-color: white;
+  border: 1px solid #ccc;
+  color: var(--light-text);
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  cursor: pointer;
+}
+.filter-pills button.active {
+  background-color: #eef5ff;
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  font-weight: bold;
+}
+
+.result-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid var(--green-text);
+}
+.result-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+.result-card-header h3 {
+  margin: 0;
+  font-size: 1.1em;
+  color: var(--dark-text);
+}
+.result-card-header .date {
+  font-size: 0.9em;
+  color: var(--light-text);
+}
+
+.result-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.status-pill {
+  background-color: var(--green-bg);
+  color: var(--green-text);
+  padding: 5px 12px;
+  border-radius: 99px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+.detail-btn {
+  background-color: var(--primary-blue);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 5%;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #888;
+  gap: 4px;
+  font-size: 0.8em;
+}
+.nav-item i {
+  font-size: 1.4em;
+}
+.nav-item.active {
+  color: var(--primary-blue);
+}
+
+@media (max-width: 769px) {
+  html {
+    font-size: 77%;
+  }
+}
+
+@media (max-width: 376px) {
+  html {
+    font-size: 70%;
+  }
+}

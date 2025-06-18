@@ -1,0 +1,84 @@
+.splash-container {
+  height: 100vh;
+  background-color: #1e63e9;
+  }
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-image: url("/public/other/cloud-pattern.png"),
+    url("/public/other/cloud-pattern.png"),
+    url("/public/other/cloud-pattern.png"),
+    url("/public/other/cloud-pattern.png"),
+    url("/public/other/cloud-pattern.png"),
+    url("/public/other/cloud-pattern.png"),
+    url("/public/other/cloud-pattern.png"),
+    url("/public/other/cloud-pattern.png"),
+    url("/public/other/cloud-pattern.png"),
+    url("/public/other/cloud-pattern.png"),
+    url("/public/other/cloud-pattern.png");
+
+  background-repeat: no-repeat;
+
+  background-size: 200px;
+
+  background-position: 5% 10%, 35% 10%, 65% 10%, 95% 10%, 17% 50%, 50% 50%,
+    80% 50%, 95% 90%, 5% 90%, 35% 90%, 65% 90%, 95% 90%;
+}
+
+.logo-box {
+  background-color: white;
+  padding: 16px;
+  border-radius: 24px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.logo-box img {
+  max-width: 240px;
+  height: auto;
+}
+
+@media (max-width: 769px) {
+  .overlay {
+    background-size: 150px;
+
+    background-position: 5% 10%, 35% 10%, 65% 10%, 95% 10%, 17% 50%, 50% 50%,
+      80% 50%, 95% 90%, 5% 90%, 35% 90%, 65% 90%, 95% 90%;
+  }
+}
+
+@media (max-width: 426px) {
+  body {
+    font-size: 60%;
+  }
+
+  .overlay {
+    background-image: none;
+    background-image: 
+      url("/public/other/cloud-pattern.png"),
+      url("/public/other/cloud-pattern.png"),
+      url("/public/other/cloud-pattern.png"),
+      url("/public/other/cloud-pattern.png");
+
+    background-size: 160px;
+
+    background-position: 95% 5%, 5% 30%, 95% 70%, 5% 95%;
+  }
+
+  .logo-box {
+    background-color: #1a73e8;
+    border-radius: 16px;
+    padding: 8px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .logo-box img {
+    width: 160px;
+    display: block;
+  }
+}

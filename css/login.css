@@ -1,0 +1,198 @@
+.container {
+    height: 100vh;
+    background-color: #1e63e9; 
+        /* radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.05) 10%, transparent 10.5%),
+        radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.05) 15%, transparent 15.5%),
+        radial-gradient(circle at 60% 85%, rgba(255, 255, 255, 0.05) 20%, transparent 20.5%),
+        radial-gradient(circle at 25% 70%, rgba(255, 255, 255, 0.05) 12%, transparent 12.5%); */
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-image: 
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png');
+  
+  background-repeat: no-repeat;
+
+  background-size: 200px;
+
+  background-position: 
+    5% 10%,   
+    35% 10%,  
+    65% 10%,  
+    95% 10%,  
+    17% 50%, 
+    50% 50%,  
+    80% 50%,  
+    95% 90%, 
+    5% 90%, 
+    35% 90%,  
+    65% 90%,  
+    95% 90%;  
+}
+
+.login-box {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    width: 320px;
+    text-align: center;
+}
+
+.logo-container {
+    background-color: #1A73E8;
+    border-radius: 16px;
+    padding: 8px;
+    display: inline-block; 
+    margin-bottom: 15px;
+}
+
+.logo-container img {
+    width: 80px;
+    display: block;
+}
+
+.login-box h2 {
+    font-size: 1.4em;
+    color: var(--main_a);
+    margin-bottom: 25px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; 
+    font-size: 1em;
+}
+
+.input-wrapper .fa-eye {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    cursor: pointer;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background-color: #156CB3;
+    color: white;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.login-btn:hover {
+    background-color: #1976d2; 
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #555;
+    font-size: 0.9em;
+}
+
+@media (max-width: 769px) {
+  body {
+    font-size: 77%;
+  }
+
+.overlay {
+  background-size: 150px;
+
+  background-position: 
+    5% 10%,   
+    35% 10%,  
+    65% 10%,  
+    95% 10%,  
+    17% 50%, 
+    50% 50%,  
+    80% 50%,  
+    95% 90%, 
+    5% 90%, 
+    35% 90%,  
+    65% 90%,  
+    95% 90%;  
+  }
+}
+
+@media (max-width: 426px) {
+  body {
+    font-size: 60%;
+  }
+
+  .overlay {
+    background-image: none;
+    background-image: 
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png'),
+    url('/public/other/cloud-pattern.png');
+
+  background-size: 160px;
+
+  background-position: 
+    95% 5%,   
+    5% 40%,  
+    95% 70%,  
+    5% 95%;  
+  }
+
+  .login-box {
+    width: 220px;
+  }
+
+  .logo-container {
+    background-color: #1A73E8;
+    border-radius: 16px;
+    padding: 8px;
+    display: inline-block; 
+    margin-bottom: 8px;
+  }
+
+  .logo-container img {
+    width: 60px;
+    display: block;
+  }
+}

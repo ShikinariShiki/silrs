@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Pemeriksaan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/jadwal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+            <a href="dashboard.html" style="color: white;">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+        <h2>Jadwal Pemeriksaan</h2>
+        <i class="fa-solid fa-bell"></i>
+    </header>
+
+    <main>
+        <div class="card">
+            <div class="calendar-header">Juni 2025</div>
+            <div class="calendar-grid">
+                <span class="day-name">Min</span><span class="day-name">Sen</span><span class="day-name">Sel</span><span class="day-name">Rab</span><span class="day-name">Kam</span><span class="day-name">Jum</span><span class="day-name">Sab</span>
+                <span class="date-number">1</span><span class="date-number">2</span><span class="date-number">3</span><span class="date-number">4</span><span class="date-number">5</span><span class="date-number">6</span><span class="date-number">7</span>
+                <span class="date-number">8</span><span class="date-number">9</span><span class="date-number">10</span><span class="date-number">11</span><span class="date-number">12</span><span class="date-number selected">13</span><span class="date-number">14</span>
+                <span class="date-number">15</span><span class="date-number">16</span><span class="date-number">17</span><span class="date-number">18</span><span class="date-number">19</span><span class="date-number">20</span><span class="date-number">21</span>
+                <span class="date-number">22</span><span class="date-number">23</span><span class="date-number">24</span><span class="date-number">25</span><span class="date-number">26</span><span class="date-number">27</span><span class="date-number">28</span>
+                <span class="date-number other-month">1</span><span class="date-number other-month">2</span><span class="date-number other-month">3</span><span class="date-number other-month">4</span><span class="date-number other-month">5</span>
+            </div>
+        </div>
+
+        <div class="schedule-list">
+            <div class="schedule-day-header">
+                <h3>Kamis, 12 Juni 2025</h3>
+                <span>1 Jadwal</span>
+            </div>
+            <hr>
+            <div class="appointment-card">
+                <div class="time-info">
+                    <div class="time">08:30</div>
+                    <div class="tz">WIB</div>
+                </div>
+                <div class="details">
+                    <h4>Pemeriksaan darah rutin</h4>
+                    <p><i class="fa-solid fa-location-dot"></i>Lab Utama, Lantai 2</p>
+                </div>
+                <span class="status-pill confirmed">Konfirmasi</span>
+            </div>
+
+            <div class="schedule-day-header">
+                <h3>Sabtu, 14 Juni 2025</h3>
+                <span>2 Jadwal</span>
+            </div>
+            <hr>
+            <div class="appointment-card">
+                <div class="time-info">
+                    <div class="time">10:00</div>
+                    <div class="tz">WIB</div>
+                </div>
+                <div class="details">
+                    <h4>Pemeriksaan urin</h4>
+                    <p><i class="fa-solid fa-location-dot"></i>Lab Patologi, Lantai 1</p>
+                </div>
+                <span class="status-pill confirmed">Konfirmasi</span>
+            </div>
+            <div class="appointment-card">
+                <div class="time-info">
+                    <div class="time">15:30</div>
+                    <div class="tz">WIB</div>
+                </div>
+                <div class="details">
+                    <h4>Tes gula darah</h4>
+                    <p><i class="fa-solid fa-location-dot"></i>Lab Utama, Lantai 3</p>
+                </div>
+                <span class="status-pill pending">Menunggu</span>
+            </div>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="jadwal.html"  class="nav-item active">
+                <i class="fa-solid fa-calendar-alt"></i>
+                <span>Jadwal</span>
+            </a>
+            <a href="hasil.html" class="nav-item">
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Hasil</span>
+            </a>
+            <a href="profil.html" class="nav-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Profil</span>
+            </a>
+    </nav>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
