@@ -1,7 +1,20 @@
 .splash-container {
   height: 100vh;
   background-color: #1e63e9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  animation: fadeOut 0.5s ease-in-out 2.5s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
   }
+}
 
 .overlay {
   display: flex;
@@ -9,45 +22,184 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  background-image: url("/public/other/cloud-pattern.png"),
-    url("/public/other/cloud-pattern.png"),
-    url("/public/other/cloud-pattern.png"),
-    url("/public/other/cloud-pattern.png"),
-    url("/public/other/cloud-pattern.png"),
-    url("/public/other/cloud-pattern.png"),
-    url("/public/other/cloud-pattern.png"),
-    url("/public/other/cloud-pattern.png"),
-    url("/public/other/cloud-pattern.png"),
-    url("/public/other/cloud-pattern.png"),
-    url("/public/other/cloud-pattern.png");
+  background-image: url("../images/cloud-pattern.png"),
+    url("../images/cloud-pattern.png"),
+    url("../images/cloud-pattern.png"),
+    url("../images/cloud-pattern.png"),
+    url("../images/cloud-pattern.png"),
+    url("../images/cloud-pattern.png"),
+    url("../images/cloud-pattern.png"),
+    url("../images/cloud-pattern.png"),
+    url("../images/cloud-pattern.png"),
+    url("../images/cloud-pattern.png"),
+    url("../images/cloud-pattern.png");
 
   background-repeat: no-repeat;
-
   background-size: 200px;
-
   background-position: 5% 10%, 35% 10%, 65% 10%, 95% 10%, 17% 50%, 50% 50%,
     80% 50%, 95% 90%, 5% 90%, 35% 90%, 65% 90%, 95% 90%;
+  
+  animation: cloudFloat 4s ease-in-out infinite;
+}
+
+@keyframes cloudFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .logo-box {
   background-color: white;
-  padding: 16px;
+  padding: 24px;
   border-radius: 24px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   text-align: center;
+  animation: logoScale 2s ease-in-out;
+}
+
+@keyframes logoScale {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .logo-box img {
   max-width: 240px;
   height: auto;
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.loading-dots span {
+  width: 12px;
+  height: 12px;
+  background-color: #1e63e9;
+  border-radius: 50%;
+  animation: dotBounce 1.5s ease-in-out infinite;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dotBounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Global styles for smooth transitions */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Fade-in animation for content after splash */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Additional logo animations */
+.logo-glow {
+    animation: logoGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+    from {
+        filter: drop-shadow(0 0 5px rgba(30, 99, 233, 0.3));
+    }
+    to {
+        filter: drop-shadow(0 0 20px rgba(30, 99, 233, 0.6));
+    }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .splash-container {
+        background-attachment: fixed;
+    }
+}
+
+/* Loading indicator improvements */
+.loading-dots span {
+    transition: all 0.3s ease;
+}
+
+.loading-dots span:hover {
+    background-color: #4285f4;
+    transform: scale(1.2);
 }
 
 @media (max-width: 769px) {
   .overlay {
     background-size: 150px;
-
     background-position: 5% 10%, 35% 10%, 65% 10%, 95% 10%, 17% 50%, 50% 50%,
       80% 50%, 95% 90%, 5% 90%, 35% 90%, 65% 90%, 95% 90%;
+  }
+  
+  .logo-box {
+    padding: 20px;
+  }
+  
+  .logo-box img {
+    max-width: 200px;
   }
 }
 
@@ -57,22 +209,20 @@
   }
 
   .overlay {
-    background-image: none;
     background-image: 
-      url("/public/other/cloud-pattern.png"),
-      url("/public/other/cloud-pattern.png"),
-      url("/public/other/cloud-pattern.png"),
-      url("/public/other/cloud-pattern.png");
+      url("../images/cloud-pattern.png"),
+      url("../images/cloud-pattern.png"),
+      url("../images/cloud-pattern.png"),
+      url("../images/cloud-pattern.png");
 
     background-size: 160px;
-
     background-position: 95% 5%, 5% 30%, 95% 70%, 5% 95%;
   }
 
   .logo-box {
-    background-color: #1a73e8;
+    background-color: white;
     border-radius: 16px;
-    padding: 8px;
+    padding: 16px;
     display: inline-block;
     margin-bottom: 8px;
   }
@@ -80,5 +230,10 @@
   .logo-box img {
     width: 160px;
     display: block;
+  }
+  
+  .loading-dots span {
+    width: 10px;
+    height: 10px;
   }
 }

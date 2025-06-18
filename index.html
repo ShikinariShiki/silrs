@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/app.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>SILRS Mobile</title>
 </head>
 <body>
-    <div class="splash-container">
+    <div class="splash-container" id="splashScreen">
         <div class="overlay">
             <div class="logo-box">
-                <img src="../images/silrs_logo.png" alt="Logo SILRS Mobile">
+                <img src="images/silrs_logo.png" alt="Logo SILRS Mobile" id="logoImage">
+                <div class="loading-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
-    </div>  
+    </div>
+    
+    <script src="js/script.js"></script>
 </body>
 </html>
