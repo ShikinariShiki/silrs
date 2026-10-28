@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/prototype.css">
+  <script src="js/auth.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -19,7 +21,7 @@
         <i class="fa-solid fa-bell"></i>
     </header>
 
-    <main>
+    <main><p class="demo-disclaimer">Data dan hasil berikut adalah simulasi, bukan rekam medis atau rekomendasi klinis.</p>
         <div class="card">
             <div class="card-header">
                 <h3>Detail Pemeriksaan</h3>
@@ -32,11 +34,11 @@
                 </div>
                  <div class="item">
                     <span class="label">Nama Pasien</span>
-                    <span class="value">Khalifman Jackson</span>
+                    <span class="value">Pasien Demo</span>
                 </div>
                 <div class="item">
                     <span class="label">No. Rekam Medis</span>
-                    <span class="value">RM - 1234567</span>
+                    <span class="value">DEMO-0001</span>
                 </div>
                  <div class="item">
                     <span class="label">Tanggal Lahir</span>
@@ -95,8 +97,8 @@
     </main>
 
     <div class="action-buttons">
-        <button class="btn-secondary">Lihat Riwayat Pemeriksaan</button>
-        <button class="btn-primary">Tandai Telah Dibaca</button>
+        <button class="btn-secondary" id="viewHistory">Lihat Riwayat Pemeriksaan</button>
+        <button class="btn-primary" id="markRead">Tandai Telah Dibaca</button>
     </div>
 
     <nav class="bottom-nav">
