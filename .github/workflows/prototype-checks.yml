@@ -34,17 +34,11 @@ jobs:
             exit 1
           fi
 
-      - name: Resolve pinned test dependency
-        run: npm install --package-lock-only --ignore-scripts --no-fund
-
-      - name: Export resolved dependency lock for repository pinning
-        run: node -e "console.log('SILRS_LOCK_BASE64=' + require('node:fs').readFileSync('package-lock.json').toString('base64'))"
+      - name: Install pinned dependencies from committed lockfile
+        run: npm ci --no-fund --ignore-scripts
 
       - name: Audit dependency vulnerabilities
-        run: npm audit --audit-level=moderate --omit=optional
-
-      - name: Install reproducibly from resolved lockfile
-        run: npm ci --no-fund --ignore-scripts
+        run: npm audit --audit-level=moderate
 
       - name: Verify exact Playwright version
         run: node -e "if (require('playwright/package.json').version !== '1.64.1') process.exit(1)"
