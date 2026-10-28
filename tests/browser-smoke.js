@@ -42,7 +42,7 @@ const server = http.createServer((req,res) => {
     await page.getByText('View Details').first().click();
     await page.waitForURL('**/detail-pemeriksaan.html');
     await page.locator('#markRead').click();
-    await page.getByText('Read').waitFor();
+    await page.locator('#markRead').getByText('Read', { exact: true }).waitFor();
     await page.goto(url + '/jadwal.html');
     await page.locator('.calendar-grid .date-number').first().click();
     await page.goto(url + '/profil.html');
