@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
-  // Splash screen. Timer dibersihkan jika pengguna melewati animasi.
+  // Splash screen; cancel the timer when the visitor skips it.
   const splash = $('#splashScreen');
   if (splash) {
     let redirected = false;
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Pencarian hasil hanya memfilter kartu yang sudah ada di halaman.
+  // Search filters the result cards currently displayed on the page.
   const search = $('.search-container input');
   const cards = $$('.results-list .result-card');
   const filterButtons = $$('.filter-pills .filter-btn');
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   if (cards.length) updateResults();
 
-  // Kalender statis: memilih tanggal tidak mengubah jadwal contoh.
+  // Static calendar selection does not modify sample appointments.
   $$('.calendar-grid .date-number:not(.other-month)').forEach(day => {
     day.setAttribute('role', 'button');
     day.setAttribute('tabindex', '0');
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Popup notifikasi demo, dibuat hanya pada halaman yang memiliki ikon lonceng.
+  // Notification preview is enabled only on pages with a bell icon.
   const bell = $('.fa-bell');
   if (bell) {
     const button = document.createElement('button');
