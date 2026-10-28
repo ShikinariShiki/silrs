@@ -14,17 +14,17 @@
   height: 100%;
   width: 100%;
   background-image: 
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png');
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png');
   
   background-repeat: no-repeat;
 
@@ -165,10 +165,10 @@
   .overlay {
     background-image: none;
     background-image: 
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png'),
-    url('/public/other/cloud-pattern.png');
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png'),
+    url('../images/cloud-pattern.png');
 
   background-size: 160px;
 
