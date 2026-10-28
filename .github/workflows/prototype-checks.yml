@@ -1,26 +1,63 @@
 name: Prototype checks
+
 on:
   push:
     branches: [main]
   pull_request:
+
+permissions:
+  contents: read
+
 jobs:
-  smoke:
+  audit-and-smoke:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Check out source
+        uses: actions/checkout@v7
         with:
-          node-version: '22'
+          persist-credentials: false
+
+      - name: Configure Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Verify runtime and action versions
+        run: |
+          node --version
+          npm --version
+          node -e "if (Number(process.versions.node.split('.')[0]) !== 24) process.exit(1)"
+          if grep -REn 'actions/(checkout|setup-node)@v[1-4]' .github/workflows; then
+            echo 'Deprecated action version detected'
+            exit 1
+          fi
+
+      - name: Resolve pinned test dependency
+        run: npm install --package-lock-only --ignore-scripts --no-fund
+
+      - name: Audit dependency vulnerabilities
+        run: npm audit --audit-level=moderate --omit=optional
+
+      - name: Install reproducibly from resolved lockfile
+        run: npm ci --no-fund --ignore-scripts
+
+      - name: Verify exact Playwright version
+        run: node -e "if (require('playwright/package.json').version !== '1.64.1') process.exit(1)"
+
       - name: Check JavaScript syntax
         run: |
           node --check js/auth.js
           node --check js/script.js
           node --check tests/smoke.js
+          node --check tests/browser-smoke.js
+
       - name: Validate local links and demo wiring
         run: node tests/smoke.js
-      - name: Install browser testing tools
-        run: |
-          npm install --no-save playwright@1.56.1
-          npx playwright install --with-deps chromium
-      - name: Test prototype interactions in Chromium
+
+      - name: Install Chromium browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Test prototype in Chromium
         run: node tests/browser-smoke.js
