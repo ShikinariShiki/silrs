@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/prototype.css">
+  <script src="js/auth.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -23,7 +25,7 @@
         <div class="avatar">
             <i class="fa-solid fa-user"></i>
         </div>
-        <h3>Khalifman Jackson</h3>
+        <h3>Pasien Demo</h3>
         <span class="status-pill">Pasien</span>
     </div>
 
@@ -33,15 +35,15 @@
             <ul class="info-list">
                 <li>
                     <i class="fa-solid fa-id-badge"></i>
-                    <div class="info-text"><strong>No. Rekam Medis</strong><span>RM -1234567</span></div>
+                    <div class="info-text"><strong>No. Rekam Medis</strong><span>DEMO-0001</span></div>
                 </li>
                 <li>
                     <i class="fa-solid fa-envelope"></i>
-                    <div class="info-text"><strong>Email</strong><span>khalifmanjcksn@email.com</span></div>
+                    <div class="info-text"><strong>Email</strong><span>demo@example.com</span></div>
                 </li>
                  <li>
                     <i class="fa-solid fa-phone"></i>
-                    <div class="info-text"><strong>Telepon</strong><span>+62 812-3456-7890</span></div>
+                    <div class="info-text"><strong>Telepon</strong><span>0800-0000-0000</span></div>
                 </li>
                 <li>
                     <i class="fa-solid fa-map-marker-alt"></i>
@@ -54,9 +56,9 @@
             </ul>
         </div>
         <div class="action-buttons">
-            <button class="btn-primary"><i class="fa-solid fa-pencil"></i>Edit Profil</button>
-            <button class="btn-secondary"><i class="fa-solid fa-lock"></i>Ubah Password</button>
-            <button class="btn-danger"><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
+            <button class="btn-primary" id="editProfile"><i class="fa-solid fa-pencil"></i>Edit Profil</button>
+            <button class="btn-secondary" id="changePassword"><i class="fa-solid fa-lock"></i>Ubah Password</button>
+            <button class="btn-danger" id="logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
         </div>
     </main>
 
