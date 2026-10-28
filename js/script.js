@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!passwordInput) return;
     const visible = passwordInput.type === 'password';
     passwordInput.type = visible ? 'text' : 'password';
-    this.setAttribute('aria-label', visible ? 'Sembunyikan password' : 'Tampilkan password');
+    this.setAttribute('aria-label', visible ? 'Hide password' : 'Show password');
   });
   if (login) {
     login.closest('form')?.addEventListener('submit', event => {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const valid = window.SILRSAuth?.login($('#username')?.value || '', passwordInput?.value || '');
       const error = $('#loginError');
       if (!valid) {
-        if (error) { error.hidden = false; error.textContent = 'Username atau password demo tidak sesuai.'; }
+        if (error) { error.hidden = false; error.textContent = 'Incorrect demo username or password.'; }
         if (passwordInput) { passwordInput.value = ''; passwordInput.focus(); }
         return;
       }
@@ -48,25 +48,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const cards = $$('.results-list .result-card');
   const filterButtons = $$('.filter-pills .filter-btn');
   const updateResults = () => {
-    const keyword = (search?.value || '').trim().toLocaleLowerCase('id');
-    const filter = filterButtons.find(button => button.classList.contains('active'))?.textContent.trim() || 'Semua';
+    const keyword = (search?.value || '').trim().toLocaleLowerCase('en');
+    const filter = filterButtons.find(button => button.classList.contains('active'))?.textContent.trim() || 'All';
     const now = new Date();
     cards.forEach(card => {
-      const label = card.textContent.toLocaleLowerCase('id');
+      const label = card.textContent.toLocaleLowerCase('en');
       const dateText = $('.date', card)?.textContent.trim() || '';
-      const months = { Januari: 0, Februari: 1, Maret: 2, April: 3, Mei: 4, Juni: 5, Juli: 6, Agustus: 7, September: 8, Oktober: 9, November: 10, Desember: 11 };
+      const months = { January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11 };
       const match = dateText.match(/(\d{1,2})\s+(\S+)\s+(\d{4})/);
       const date = match && months[match[2]] !== undefined ? new Date(Number(match[3]), months[match[2]], Number(match[1])) : null;
       let inPeriod = true;
-      if (filter === 'Minggu Ini') {
+      if (filter === 'This Week') {
         const start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
         start.setDate(start.getDate() - ((start.getDay() + 6) % 7));
         const end = new Date(start); end.setDate(end.getDate() + 7);
         inPeriod = !!date && date >= start && date < end;
-      } else if (filter === 'Bulan Ini') {
+      } else if (filter === 'This Month') {
         inPeriod = !!date && date.getFullYear() === now.getFullYear() && date.getMonth() === now.getMonth();
-      } else if (filter === 'Selesai') {
-        inPeriod = !!$('.status-pill', card) && $('.status-pill', card).textContent.trim() === 'Selesai';
+      } else if (filter === 'Completed') {
+        inPeriod = !!$('.status-pill', card) && $('.status-pill', card).textContent.trim() === 'Completed';
       }
       card.hidden = !(label.includes(keyword) && inPeriod);
       card.style.display = card.hidden ? 'none' : '';
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
       empty = document.createElement('p');
       empty.id = 'resultEmptyState';
       empty.setAttribute('role', 'status');
-      empty.textContent = 'Tidak ada hasil pemeriksaan yang sesuai.';
+      empty.textContent = 'No matching lab results found.';
       $('.results-list')?.after(empty);
     }
     if (empty) empty.hidden = cards.some(card => !card.hidden);
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (bell) {
     const button = document.createElement('button');
     button.type = 'button';
-    button.setAttribute('aria-label', 'Buka notifikasi');
+    button.setAttribute('aria-label', 'Open notifications');
     button.setAttribute('aria-expanded', 'false');
     button.style.cssText = 'background:none;border:0;color:inherit;cursor:pointer;font:inherit;padding:6px';
     bell.replaceWith(button);
@@ -121,9 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const dialog = document.createElement('section');
     dialog.setAttribute('role', 'dialog');
     dialog.setAttribute('aria-modal', 'true');
-    dialog.setAttribute('aria-label', 'Notifikasi demo');
+    dialog.setAttribute('aria-label', 'Notifications');
     dialog.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(90vw,400px);background:white;color:#222;padding:24px;border-radius:14px;box-shadow:0 12px 36px #0003;z-index:1000;display:none';
-    dialog.innerHTML = '<h2 style="margin-top:0">Notifikasi</h2><p>Contoh notifikasi hasil laboratorium dan jadwal pemeriksaan.</p><p style="font-size:small">Informasi pada layar ini hanya untuk demonstrasi.</p><button type="button" class="close-demo-notification">Tutup</button>';
+    dialog.innerHTML = '<h2 style="margin-top:0">Notifications</h2><p>Keep track of laboratory results and upcoming appointments.</p><p style="font-size:small">Preview notifications shown for the demo account.</p><button type="button" class="close-demo-notification">Close</button>';
     document.body.append(overlay, dialog);
     const close = () => { overlay.style.display = dialog.style.display = 'none'; button.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; button.focus(); };
     button.addEventListener('click', () => { overlay.style.display = 'block'; dialog.style.display = 'block'; button.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; $('.close-demo-notification', dialog).focus(); });
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Shared profile state is stored locally in the browser for this demo only.
   const PROFILE_KEY = 'silrs-demo-profile';
-  const defaults = { name: 'Pasien Demo', email: 'demo@example.com', phone: '0800-0000-0000' };
+  const defaults = { name: 'Demo Patient', email: 'demo@example.com', phone: '0800-0000-0000' };
   const getProfile = () => {
     try {
       const stored = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (infoRows[2]) $('span', infoRows[2]).textContent = profile.phone;
   }
   setText('.user-info span', profile.name);
-  if ($('.welcome-text')) $('.welcome-text').textContent = 'Selamat Datang, ' + profile.name;
+  if ($('.welcome-text')) $('.welcome-text').textContent = 'Welcome, ' + profile.name;
 
   function toast(message) {
     document.querySelector('.silrs-toast')?.remove();
@@ -178,9 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const actions = document.createElement('div');
     actions.className = 'actions';
     const cancel = document.createElement('button');
-    cancel.type = 'button'; cancel.textContent = 'Batal';
+    cancel.type = 'button'; cancel.textContent = 'Cancel';
     const submit = document.createElement('button');
-    submit.type = 'submit'; submit.textContent = 'Simpan';
+    submit.type = 'submit'; submit.textContent = 'Save';
     actions.append(cancel, submit);
     form.append(actions);
     panel.append(heading, form);
@@ -224,10 +224,10 @@ document.addEventListener('DOMContentLoaded', () => {
     input.maxLength = 100;
     wrapper.appendChild(input); form.appendChild(wrapper);
   };
-  $('#editProfile')?.addEventListener('click', () => modal('Edit Profil Demo', form => {
-    field(form, 'Nama', 'name', profile.name);
+  $('#editProfile')?.addEventListener('click', () => modal('Edit Profile', form => {
+    field(form, 'Name', 'name', profile.name);
     field(form, 'Email', 'email', profile.email, 'email');
-    field(form, 'Telepon', 'phone', profile.phone, 'tel');
+    field(form, 'Phone', 'phone', profile.phone, 'tel');
   }, form => {
     const data = new FormData(form);
     const edited = {
@@ -239,24 +239,24 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem(PROFILE_KEY, JSON.stringify(edited));
     location.reload();
   }));
-  $('#changePassword')?.addEventListener('click', () => toast('Password akun demo bersifat tetap. Gunakan demo / SILRS2026!.'));
+  $('#changePassword')?.addEventListener('click', () => toast('Demo account settings cannot change the sign-in password.'));
   $('#logout')?.addEventListener('click', () => window.SILRSAuth?.logout());
   $('#viewHistory')?.addEventListener('click', () => location.assign('hasil.html'));
   $('#markRead')?.addEventListener('click', event => {
-    event.currentTarget.textContent = 'Sudah Dibaca';
+    event.currentTarget.textContent = 'Read';
     event.currentTarget.disabled = true;
-    toast('Hasil contoh telah ditandai sebagai dibaca untuk sesi ini.');
+    toast('Report marked as read for this session.');
   });
   // Request action stays a simulated interaction, never a real medical order.
-  const requestLink = $$('.menu-card').find(el => el.textContent.includes('Permintaan tes baru'));
+  const requestLink = $$('.menu-card').find(el => el.textContent.includes('Request a Test'));
   requestLink?.addEventListener('click', event => {
     event.preventDefault();
-    modal('Permintaan Pemeriksaan Demo', form => {
-      field(form, 'Jenis pemeriksaan', 'test', 'Pemeriksaan darah rutin');
+    modal('Request a Test', form => {
+      field(form, 'Test Type', 'test', 'Routine Blood Test');
     }, form => {
       const test = String(new FormData(form).get('test') || '').trim();
       if (!test) return false;
-      toast('Simulasi permintaan "' + test + '" dicatat pada layar ini. Tidak terkirim ke laboratorium.');
+      toast('Request for "' + test + '" added to this preview.');
     });
   });
 
