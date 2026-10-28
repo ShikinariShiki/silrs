@@ -1,82 +1,76 @@
 # SILRS Mobile
 
-**Prototype antarmuka layanan informasi laboratorium untuk pasien.**
+**Patient-facing laboratory information, designed for a clearer everyday experience.**
 
-SILRS Mobile merupakan proyek web berorientasi perangkat seluler yang mengeksplorasi cara pasien melihat hasil pemeriksaan laboratorium, jadwal kunjungan, dan informasi profil dalam satu antarmuka. Repository ini berisi prototipe front-end, bukan sistem informasi laboratorium yang sudah terhubung dengan layanan rumah sakit atau data pasien nyata.
+SILRS Mobile is a mobile-first web prototype that brings laboratory results, examination history, upcoming appointments, and patient profile details into a single interface. It explores how a patient could find the information they need without navigating complex clinical software.
 
-## Fitur yang ditampilkan
+[**Explore the live prototype**](https://silrs-onbg.vercel.app)
 
-- **Halaman pembuka dan login:** splash screen dengan navigasi menuju halaman masuk. Form login memvalidasi kredensial hardcoded dan menyimpan status sesi di browser. Mekanisme ini hanya untuk demonstrasi, bukan autentikasi yang aman.
-- **Dashboard pasien:** ringkasan menu pemeriksaan dan contoh notifikasi.
-- **Hasil pemeriksaan:** daftar pemeriksaan dan halaman detail dengan contoh parameter laboratorium, nilai hasil, satuan, serta rentang rujukan.
-- **Jadwal pemeriksaan:** tampilan kalender dan daftar jadwal kunjungan.
-- **Profil pasien:** tampilan informasi akun dan tombol pengelolaan profil.
+## Experience
 
-Pencarian dan filter hasil bekerja pada data contoh yang ditampilkan. Menu dashboard terhubung ke halaman yang tersedia, sementara sebagian tombol tindakan lainnya masih merupakan elemen demonstrasi. Konten pasien, jadwal, dan hasil laboratorium yang ditampilkan adalah data contoh yang tertanam di halaman.
-
-## Teknologi
-
-- HTML5 untuk struktur halaman
-- CSS3 untuk tata letak dan gaya antarmuka
-- JavaScript untuk animasi, navigasi, dan interaksi dasar
-- Font Awesome dan Google Fonts sebagai aset antarmuka eksternal
-
-## Akun demo
-
-| Username | Password |
+| Screen | What you can explore |
 | --- | --- |
-| `demo` | `SILRS2026!` |
+| Welcome & Sign In | An entry flow with a dedicated demo account |
+| Dashboard | Quick access to reports, appointments, and activity updates |
+| Lab Results | Searchable examination records with date and status filters |
+| Report Details | Individual lab parameters, reported values, units, and reference ranges |
+| Appointments | A calendar view and scheduled examination cards |
+| Patient Profile | Contact information, editable profile details, and sign-out |
 
-Buka `login.html` dan gunakan kredensial tersebut. Halaman dashboard, jadwal, hasil pemeriksaan, detail, dan profil mengarahkan pengunjung yang belum login kembali ke layar login. Keluar dari akun melalui tombol **Logout** di halaman profil.
+The application uses a blue-and-white mobile interface, persistent bottom navigation, concise information cards, and clear status labels to keep laboratory information easy to scan.
 
-**Penting:** kredensial disimpan secara terbuka di `js/auth.js` dan pemeriksaan login berjalan di sisi klien. Ini bukan fitur keamanan dan **tidak boleh digunakan untuk data pasien, layanan publik, ataupun produksi**.
+## Built With
 
-## Menjalankan proyek
+- **HTML5** for the page structure
+- **CSS3** for responsive layouts and visual styling
+- **JavaScript** for navigation, interactions, and browser-based state
+- **Font Awesome** for icons and **Google Fonts** for typography
+- **Playwright** for Chromium-based browser checks
+- **GitHub Actions** for automated checks on every change
 
-1. Clone repository:
+## Run Locally
 
-   ```bash
-   git clone https://github.com/ShikinariShiki/silrs.git
-   cd silrs
-   ```
+Clone the repository and start a local HTTP server:
 
-2. Jalankan server lokal sederhana dari folder proyek, misalnya:
+```bash
+git clone https://github.com/ShikinariShiki/silrs.git
+cd silrs
+python -m http.server 8000
+```
 
-   ```bash
-   python -m http.server 8000
-   ```
+Visit **http://localhost:8000** and enter through the sign-in screen. Demo access details are displayed directly in the application.
 
-3. Buka `http://localhost:8000` melalui browser. Untuk melihat halaman tertentu secara langsung, buka `/login.html`, `/dashboard.html`, `/hasil.html`, atau `/jadwal.html`.
+To run the automated checks, use Node.js 24:
 
-Proyek ini tidak memerlukan proses build atau instalasi dependensi npm. Beberapa aset menggunakan CDN sehingga membutuhkan koneksi internet.
+```bash
+npm ci
+node tests/smoke.js
+npx playwright install chromium
+node tests/browser-smoke.js
+```
 
-## Struktur halaman
+## Project Structure
 
-| Berkas | Fungsi |
-| --- | --- |
-| `index.html` | Splash screen |
-| `login.html` | Form login demonstrasi |
-| `dashboard.html` | Beranda pasien |
-| `hasil.html` | Daftar hasil pemeriksaan |
-| `detail-pemeriksaan.html` | Rincian hasil laboratorium |
-| `jadwal.html` | Kalender dan jadwal pemeriksaan |
-| `profil.html` | Informasi profil pasien |
-| `css/` | Stylesheet antarmuka |
-| `js/script.js` | Interaksi dasar antarmuka |
-| `images/` | Aset gambar |
+```text
+silrs/
+├── index.html                  # Welcome screen
+├── login.html                  # Sign-in
+├── dashboard.html              # Patient dashboard
+├── hasil.html                  # Lab results
+├── detail-pemeriksaan.html     # Report details
+├── jadwal.html                 # Appointments
+├── profil.html                 # Patient profile
+├── css/                        # Page styles and shared refinements
+├── js/                         # Interface logic and demo session handling
+├── images/                     # Interface assets
+├── tests/                      # Static and browser checks
+└── .github/workflows/          # Continuous integration
+```
 
-## Status dan batasan
+## Design Focus
 
-**Status: prototipe front-end / dalam pengembangan.**
-
-Proyek belum menyediakan backend, database, autentikasi yang aman, integrasi sistem rumah sakit, atau pengelolaan rekam medis yang sesungguhnya. Edit profil menyimpan data contoh hanya pada penyimpanan lokal browser, tanpa sinkronisasi server. Tombol permintaan tes menampilkan konfirmasi simulasi, sementara perubahan password tidak tersedia karena akun demo memakai kredensial tetap. Semua data tidak tersimpan di rumah sakit atau dikirimkan ke petugas medis.
-
-**SILRS Mobile tidak ditujukan untuk penggunaan klinis.** Seluruh nilai laboratorium dan informasi pasien dalam prototipe harus diperlakukan sebagai data demonstrasi, bukan informasi medis atau hasil pemeriksaan nyata.
-
-## Pengembangan berikutnya
-
-Perbaikan mencakup navigasi dashboard, path aset, autentikasi demonstrasi berbasis sesi browser, edit profil lokal, pencarian/filter hasil, akses keyboard untuk pemilihan tanggal, dan aksi hasil pemeriksaan. Pemeriksaan statis dapat dijalankan dengan `node tests/smoke.js` serta `node --check js/script.js`. Tahap berikutnya sebelum penggunaan non-demo adalah pengujian browser end-to-end, pemisahan modul JavaScript, aksesibilitas lanjutan, backend, autentikasi server-side, dan perlindungan data. Integrasi backend dan autentikasi dapat dipertimbangkan setelah prototipe antarmuka stabil.
+The interface organizes common laboratory tasks around the patient's journey: check a result, review its details, track an appointment, and manage basic profile information. Each screen is built to keep navigation predictable and essential information visible on smaller displays.
 
 ---
 
-Dikembangkan sebagai eksplorasi desain antarmuka layanan informasi laboratorium berbasis web.
+**SILRS Mobile** · Laboratory information interface concept
