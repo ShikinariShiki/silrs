@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inPeriod = !!$('.status-pill', card) && $('.status-pill', card).textContent.trim() === 'Selesai';
       }
       card.hidden = !(label.includes(keyword) && inPeriod);
+      card.style.display = card.hidden ? 'none' : '';
     });
     let empty = $('#resultEmptyState');
     if (cards.length && !empty) {
