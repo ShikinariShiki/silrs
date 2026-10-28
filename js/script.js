@@ -20,13 +20,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { once: true });
   }
 
-  // Form login hanya memindahkan pengguna ke tampilan demo.
+  // Demo login checks the hardcoded credentials. Not real authentication.
   const login = $('#login-btn');
+  const passwordInput = $('#password');
+  $('#togglePassword')?.addEventListener('click', function () {
+    if (!passwordInput) return;
+    const visible = passwordInput.type === 'password';
+    passwordInput.type = visible ? 'text' : 'password';
+    this.setAttribute('aria-label', visible ? 'Sembunyikan password' : 'Tampilkan password');
+  });
   if (login) {
-    const form = login.closest('form');
-    if (form) form.addEventListener('submit', (event) => {
+    login.closest('form')?.addEventListener('submit', event => {
       event.preventDefault();
-      window.location.assign('dashboard.html');
+      const valid = window.SILRSAuth?.login($('#username')?.value || '', passwordInput?.value || '');
+      const error = $('#loginError');
+      if (!valid) {
+        if (error) { error.hidden = false; error.textContent = 'Username atau password demo tidak sesuai.'; }
+        if (passwordInput) { passwordInput.value = ''; passwordInput.focus(); }
+        return;
+      }
+      location.replace('dashboard.html');
     });
   }
 
@@ -118,4 +131,133 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.addEventListener('click', close);
     document.addEventListener('keydown', event => { if (event.key === 'Escape' && dialog.style.display === 'block') close(); });
   }
+
+  // Shared profile state is stored locally in the browser for this demo only.
+  const PROFILE_KEY = 'silrs-demo-profile';
+  const defaults = { name: 'Pasien Demo', email: 'demo@example.com', phone: '0800-0000-0000' };
+  const getProfile = () => {
+    try {
+      const stored = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
+      return { ...defaults, ...stored };
+    } catch { return { ...defaults }; }
+  };
+  const profile = getProfile();
+  const textOf = selector => $(selector);
+  const infoRows = $$('.info-list li');
+  const setText = (selector, value) => { const element = textOf(selector); if (element) element.textContent = value; };
+  if ($('.profile-header h3')) {
+    setText('.profile-header h3', profile.name);
+    if (infoRows[1]) $('span', infoRows[1]).textContent = profile.email;
+    if (infoRows[2]) $('span', infoRows[2]).textContent = profile.phone;
+  }
+  setText('.user-info span', profile.name);
+  if ($('.welcome-text')) $('.welcome-text').textContent = 'Selamat Datang, ' + profile.name;
+
+  function toast(message) {
+    document.querySelector('.silrs-toast')?.remove();
+    const t = document.createElement('div');
+    t.className = 'silrs-toast';
+    t.setAttribute('role', 'status');
+    t.textContent = message;
+    document.body.appendChild(t);
+    window.setTimeout(() => t.remove(), 3500);
+  }
+
+  function modal(title, bodyBuilder, onSave) {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'silrs-modal-backdrop';
+    const panel = document.createElement('section');
+    panel.className = 'silrs-modal';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-modal', 'true');
+    panel.setAttribute('aria-label', title);
+    const heading = document.createElement('h2');
+    heading.textContent = title;
+    const form = document.createElement('form');
+    bodyBuilder(form);
+    const actions = document.createElement('div');
+    actions.className = 'actions';
+    const cancel = document.createElement('button');
+    cancel.type = 'button'; cancel.textContent = 'Batal';
+    const submit = document.createElement('button');
+    submit.type = 'submit'; submit.textContent = 'Simpan';
+    actions.append(cancel, submit);
+    form.append(actions);
+    panel.append(heading, form);
+    backdrop.appendChild(panel);
+    document.body.appendChild(backdrop);
+    document.body.style.overflow = 'hidden';
+    const previous = document.activeElement;
+    const dismiss = () => {
+      backdrop.remove(); document.body.style.overflow = '';
+      if (previous?.isConnected) previous.focus();
+      document.removeEventListener('keydown', handleKeys);
+    };
+    const handleKeys = event => {
+      if (event.key === 'Escape') dismiss();
+      if (event.key === 'Tab') {
+        const items = [...panel.querySelectorAll('button,input')];
+        if (event.shiftKey && document.activeElement === items[0]) {
+          event.preventDefault(); items[items.length - 1].focus();
+        } else if (!event.shiftKey && document.activeElement === items[items.length - 1]) {
+          event.preventDefault(); items[0].focus();
+        }
+      }
+    };
+    document.addEventListener('keydown', handleKeys);
+    cancel.addEventListener('click', dismiss);
+    backdrop.addEventListener('click', event => { if (event.target === backdrop) dismiss(); });
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (onSave(form) !== false) dismiss();
+    });
+    form.querySelector('input,button')?.focus();
+  }
+  const field = (form, label, name, value, type = 'text') => {
+    const wrapper = document.createElement('label');
+    wrapper.textContent = label;
+    const input = document.createElement('input');
+    input.name = name;
+    input.type = type;
+    input.value = value;
+    input.required = true;
+    input.maxLength = 100;
+    wrapper.appendChild(input); form.appendChild(wrapper);
+  };
+  $('#editProfile')?.addEventListener('click', () => modal('Edit Profil Demo', form => {
+    field(form, 'Nama', 'name', profile.name);
+    field(form, 'Email', 'email', profile.email, 'email');
+    field(form, 'Telepon', 'phone', profile.phone, 'tel');
+  }, form => {
+    const data = new FormData(form);
+    const edited = {
+      name: String(data.get('name') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      phone: String(data.get('phone') || '').trim()
+    };
+    if (!edited.name || !edited.email || !edited.phone) return false;
+    localStorage.setItem(PROFILE_KEY, JSON.stringify(edited));
+    location.reload();
+  }));
+  $('#changePassword')?.addEventListener('click', () => toast('Password akun demo bersifat tetap. Gunakan demo / SILRS2026!.'));
+  $('#logout')?.addEventListener('click', () => window.SILRSAuth?.logout());
+  $('#viewHistory')?.addEventListener('click', () => location.assign('hasil.html'));
+  $('#markRead')?.addEventListener('click', event => {
+    event.currentTarget.textContent = 'Sudah Dibaca';
+    event.currentTarget.disabled = true;
+    toast('Hasil contoh telah ditandai sebagai dibaca untuk sesi ini.');
+  });
+  // Request action stays a simulated interaction, never a real medical order.
+  const requestLink = $$('.menu-card').find(el => el.textContent.includes('Permintaan tes baru'));
+  requestLink?.addEventListener('click', event => {
+    event.preventDefault();
+    modal('Permintaan Pemeriksaan Demo', form => {
+      field(form, 'Jenis pemeriksaan', 'test', 'Pemeriksaan darah rutin');
+    }, form => {
+      const test = String(new FormData(form).get('test') || '').trim();
+      if (!test) return false;
+      toast('Simulasi permintaan "' + test + '" dicatat pada layar ini. Tidak terkirim ke laboratorium.');
+    });
+  });
+
 });
