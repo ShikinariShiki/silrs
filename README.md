@@ -12,7 +12,7 @@ SILRS Mobile merupakan proyek web berorientasi perangkat seluler yang mengeksplo
 - **Jadwal pemeriksaan:** tampilan kalender dan daftar jadwal kunjungan.
 - **Profil pasien:** tampilan informasi akun dan tombol pengelolaan profil.
 
-Sebagian elemen, seperti tombol tindakan, pencarian, filter, dan menu layanan, masih berupa antarmuka atau interaksi terbatas. Konten pasien, jadwal, dan hasil laboratorium yang ditampilkan adalah data contoh yang tertanam di halaman.
+Pencarian dan filter hasil bekerja pada data contoh yang ditampilkan. Menu dashboard terhubung ke halaman yang tersedia, sementara sebagian tombol tindakan lainnya masih merupakan elemen demonstrasi. Konten pasien, jadwal, dan hasil laboratorium yang ditampilkan adalah data contoh yang tertanam di halaman.
 
 ## Teknologi
 
@@ -59,13 +59,13 @@ Proyek ini tidak memerlukan proses build atau instalasi dependensi npm. Beberapa
 
 **Status: prototipe front-end / dalam pengembangan.**
 
-Proyek belum menyediakan backend, database, autentikasi yang aman, integrasi sistem rumah sakit, atau pengelolaan rekam medis yang sesungguhnya. Beberapa tautan, tombol, dan perilaku JavaScript juga masih memerlukan perbaikan sebelum prototipe dapat digunakan sebagai demo yang konsisten.
+Proyek belum menyediakan backend, database, autentikasi yang aman, integrasi sistem rumah sakit, atau pengelolaan rekam medis yang sesungguhnya. Sejumlah tombol tindakan seperti edit profil, ubah kata sandi, dan permintaan tes baru belum menjalankan proses sungguhan. Login langsung membuka dashboard tanpa pemeriksaan kredensial dan tidak boleh digunakan untuk akses data nyata.
 
 **SILRS Mobile tidak ditujukan untuk penggunaan klinis.** Seluruh nilai laboratorium dan informasi pasien dalam prototipe harus diperlakukan sebagai data demonstrasi, bukan informasi medis atau hasil pemeriksaan nyata.
 
 ## Pengembangan berikutnya
 
-Prioritas pengembangan mencakup perbaikan navigasi dan path aset, pemisahan kode JavaScript berdasarkan halaman, penggantian data statis dengan data simulasi yang terstruktur, peningkatan aksesibilitas, serta pengujian alur pengguna. Integrasi backend dan autentikasi dapat dipertimbangkan setelah prototipe antarmuka stabil.
+Perbaikan awal telah mencakup navigasi menu dashboard, path aset, kontrol JavaScript yang aman pada tiap halaman, pencarian/filter data contoh, dan akses keyboard untuk pemilihan tanggal. Tahap berikutnya mencakup pengujian browser menyeluruh, pemisahan JavaScript berdasarkan halaman, penggantian data statis dengan fixture yang terstruktur, serta peningkatan aksesibilitas. Integrasi backend dan autentikasi dapat dipertimbangkan setelah prototipe antarmuka stabil.
 
 ---
 
