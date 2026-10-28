@@ -6,7 +6,7 @@ SILRS Mobile merupakan proyek web berorientasi perangkat seluler yang mengeksplo
 
 ## Fitur yang ditampilkan
 
-- **Halaman pembuka dan login:** splash screen dengan navigasi menuju halaman masuk. Login saat ini bersifat demonstrasi tanpa autentikasi pengguna.
+- **Halaman pembuka dan login:** splash screen dengan navigasi menuju halaman masuk. Form login memvalidasi kredensial hardcoded dan menyimpan status sesi di browser. Mekanisme ini hanya untuk demonstrasi, bukan autentikasi yang aman.
 - **Dashboard pasien:** ringkasan menu pemeriksaan dan contoh notifikasi.
 - **Hasil pemeriksaan:** daftar pemeriksaan dan halaman detail dengan contoh parameter laboratorium, nilai hasil, satuan, serta rentang rujukan.
 - **Jadwal pemeriksaan:** tampilan kalender dan daftar jadwal kunjungan.
@@ -20,6 +20,16 @@ Pencarian dan filter hasil bekerja pada data contoh yang ditampilkan. Menu dashb
 - CSS3 untuk tata letak dan gaya antarmuka
 - JavaScript untuk animasi, navigasi, dan interaksi dasar
 - Font Awesome dan Google Fonts sebagai aset antarmuka eksternal
+
+## Akun demo
+
+| Username | Password |
+| --- | --- |
+| `demo` | `SILRS2026!` |
+
+Buka `login.html` dan gunakan kredensial tersebut. Halaman dashboard, jadwal, hasil pemeriksaan, detail, dan profil mengarahkan pengunjung yang belum login kembali ke layar login. Keluar dari akun melalui tombol **Logout** di halaman profil.
+
+**Penting:** kredensial disimpan secara terbuka di `js/auth.js` dan pemeriksaan login berjalan di sisi klien. Ini bukan fitur keamanan dan **tidak boleh digunakan untuk data pasien, layanan publik, ataupun produksi**.
 
 ## Menjalankan proyek
 
@@ -59,13 +69,13 @@ Proyek ini tidak memerlukan proses build atau instalasi dependensi npm. Beberapa
 
 **Status: prototipe front-end / dalam pengembangan.**
 
-Proyek belum menyediakan backend, database, autentikasi yang aman, integrasi sistem rumah sakit, atau pengelolaan rekam medis yang sesungguhnya. Sejumlah tombol tindakan seperti edit profil, ubah kata sandi, dan permintaan tes baru belum menjalankan proses sungguhan. Login langsung membuka dashboard tanpa pemeriksaan kredensial dan tidak boleh digunakan untuk akses data nyata.
+Proyek belum menyediakan backend, database, autentikasi yang aman, integrasi sistem rumah sakit, atau pengelolaan rekam medis yang sesungguhnya. Edit profil menyimpan data contoh hanya pada penyimpanan lokal browser, tanpa sinkronisasi server. Tombol permintaan tes menampilkan konfirmasi simulasi, sementara perubahan password tidak tersedia karena akun demo memakai kredensial tetap. Semua data tidak tersimpan di rumah sakit atau dikirimkan ke petugas medis.
 
 **SILRS Mobile tidak ditujukan untuk penggunaan klinis.** Seluruh nilai laboratorium dan informasi pasien dalam prototipe harus diperlakukan sebagai data demonstrasi, bukan informasi medis atau hasil pemeriksaan nyata.
 
 ## Pengembangan berikutnya
 
-Perbaikan awal telah mencakup navigasi menu dashboard, path aset, kontrol JavaScript yang aman pada tiap halaman, pencarian/filter data contoh, dan akses keyboard untuk pemilihan tanggal. Tahap berikutnya mencakup pengujian browser menyeluruh, pemisahan JavaScript berdasarkan halaman, penggantian data statis dengan fixture yang terstruktur, serta peningkatan aksesibilitas. Integrasi backend dan autentikasi dapat dipertimbangkan setelah prototipe antarmuka stabil.
+Perbaikan mencakup navigasi dashboard, path aset, autentikasi demonstrasi berbasis sesi browser, edit profil lokal, pencarian/filter hasil, akses keyboard untuk pemilihan tanggal, dan aksi hasil pemeriksaan. Pemeriksaan statis dapat dijalankan dengan `node tests/smoke.js` serta `node --check js/script.js`. Tahap berikutnya sebelum penggunaan non-demo adalah pengujian browser end-to-end, pemisahan modul JavaScript, aksesibilitas lanjutan, backend, autentikasi server-side, dan perlindungan data. Integrasi backend dan autentikasi dapat dipertimbangkan setelah prototipe antarmuka stabil.
 
 ---
 
