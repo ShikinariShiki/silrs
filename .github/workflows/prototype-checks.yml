@@ -1,0 +1,20 @@
+name: Prototype checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check js/auth.js
+          node --check js/script.js
+          node --check tests/smoke.js
+      - name: Validate local links and demo wiring
+        run: node tests/smoke.js
