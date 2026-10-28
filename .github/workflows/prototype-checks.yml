@@ -37,6 +37,9 @@ jobs:
       - name: Resolve pinned test dependency
         run: npm install --package-lock-only --ignore-scripts --no-fund
 
+      - name: Export resolved dependency lock for repository pinning
+        run: node -e "console.log('SILRS_LOCK_BASE64=' + require('node:fs').readFileSync('package-lock.json').toString('base64'))"
+
       - name: Audit dependency vulnerabilities
         run: npm audit --audit-level=moderate --omit=optional
 
