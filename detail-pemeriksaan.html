@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Pemeriksaan</title>
+    <title>Test Details</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="css/detail-pemeriksaan.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,49 +17,49 @@
         <a href="hasil.html" style="color: white;">
                 <i class="fa-solid fa-arrow-left"></i>
         </a>
-        <h2>Hasil Pemeriksaan</h2>
+        <h2>Lab Results</h2>
         <i class="fa-solid fa-bell"></i>
     </header>
 
-    <main><p class="demo-disclaimer">Data dan hasil berikut adalah simulasi, bukan rekam medis atau rekomendasi klinis.</p>
+    <main><p class="demo-disclaimer">Sample laboratory results for interface preview.</p>
         <div class="card">
             <div class="card-header">
-                <h3>Detail Pemeriksaan</h3>
-                <span class="date">14 Mei 2025</span>
+                <h3>Test Details</h3>
+                <span class="date">14 May 2025</span>
             </div>
             <div class="detail-list">
                 <div class="item">
-                    <span class="label">Pemeriksaan</span>
-                    <span class="value">Pemeriksaan Hematologi Lengkap</span>
+                    <span class="label">Test</span>
+                    <span class="value">Complete Blood Count</span>
                 </div>
                  <div class="item">
-                    <span class="label">Nama Pasien</span>
-                    <span class="value">Pasien Demo</span>
+                    <span class="label">Patient Name</span>
+                    <span class="value">Demo Patient</span>
                 </div>
                 <div class="item">
-                    <span class="label">No. Rekam Medis</span>
+                    <span class="label">Record ID</span>
                     <span class="value">DEMO-0001</span>
                 </div>
                  <div class="item">
-                    <span class="label">Tanggal Lahir</span>
-                    <span class="value">1 Januari 1990</span>
+                    <span class="label">Date of Birth</span>
+                    <span class="value">1 January 1990</span>
                 </div>
                  <div class="item">
-                    <span class="label">Dokter Periksa</span>
+                    <span class="label">Attending Physician</span>
                     <span class="value">Johny Dika</span>
                 </div>
                  <div class="item">
-                    <span class="label">Hasil Keluar</span>
-                    <span class="value">15 Mei 2025</span>
+                    <span class="label">Reported On</span>
+                    <span class="value">15 May 2025</span>
                 </div>
             </div>
         </div>
 
         <div class="card">
-             <div class="card-header"><h3>Hasil Lab</h3></div>
+             <div class="card-header"><h3>Lab Findings</h3></div>
              <table class="lab-table">
                 <thead>
-                    <tr><th>Nama Komponen</th><th>Hasil</th><th>Satuan</th><th>Rentang Normal</th></tr>
+                    <tr><th>Parameter</th><th>Results</th><th>Unit</th><th>Reference Range</th></tr>
                 </thead>
                 <tbody>
                     <tr>
@@ -91,14 +91,14 @@
         </div>
 
          <div class="card notes">
-             <div class="card-header"><h3><i class="fa-solid fa-pencil"></i> Catatan</h3></div>
-             <p>Catatan pemeriksaan pada halaman ini hanya merupakan contoh tampilan dan bukan penilaian medis.</p>
+             <div class="card-header"><h3><i class="fa-solid fa-pencil"></i> Notes</h3></div>
+             <p>Sample notes are provided for the laboratory report preview.</p>
         </div>
     </main>
 
     <div class="action-buttons">
-        <button class="btn-secondary" id="viewHistory">Lihat Riwayat Pemeriksaan</button>
-        <button class="btn-primary" id="markRead">Tandai Telah Dibaca</button>
+        <button class="btn-secondary" id="viewHistory">Lihat Test History</button>
+        <button class="btn-primary" id="markRead">Mark as Read</button>
     </div>
 
     <nav class="bottom-nav">
@@ -108,15 +108,15 @@
         </a>
         <a href="jadwal.html"  class="nav-item">
             <i class="fa-solid fa-calendar-alt"></i>
-            <span>Jadwal</span>
+            <span>Appointments</span>
         </a>
         <a href="hasil.html" class="nav-item active">
             <i class="fa-solid fa-file-medical"></i>
-            <span>Hasil</span>
+            <span>Results</span>
         </a>
         <a href="profil.html" class="nav-item">
             <i class="fa-solid fa-user"></i>
-            <span>Profil</span>
+            <span>Profile</span>
         </a>
     </nav>
     <script src="js/script.js" defer></script>
